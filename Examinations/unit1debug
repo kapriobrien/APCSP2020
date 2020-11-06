@@ -1,0 +1,54 @@
+#A. Prints the numbers 1-10
+#This function would work if it was in range(1,11)
+#However, in range(10), it only prints out numbers 1-9
+for j in range(1,11):
+    print(j)
+
+#B. Prints out all numbers 0-100 that are divisible by 2
+#This function would work if the print function wasn't indented so many spaces
+#As well, I'll assume that 0-100 includes 100, so we'll also go to range(101)
+#We will also utilize the modulo operator instead of the division operator
+#becuase the program left as is wouldn't check if a number was even (divisible by 2)
+#only if itself divided by 2 was equal to 0
+#Finally, the remainder of 0/2 is equal to 0, however it isn't divisible by 2, so 
+#We will add a not equal to 0 conditional in our if statement
+for i in range(101):
+    if i != 0 and i%2 == 0:
+        print(i)
+
+#C. Prints out a 0 if the user types N and a 1 if the user types Y; terminates if user types S
+#Issues with names of variables, improper if statement and while loop conditionals, and also not sure 
+#what "exit" denotes so I'll assume it means to leave the while loop. As well, the assignment operator
+#is used in place where the equality operator is intended to be used
+
+while True:
+    ans = input('Input Y/N/S:')
+    if ans == 'N':
+        print(0)
+        continue
+    elif ans == 'Y':
+        print(1)
+        continue
+    elif ans == 'S':
+        break
+
+
+#D. Determines, based on user input, if the user has beaten Joey Chestnut's Taco and Hot Dog records
+#Replaced >= operator with >, changed the inputs to be variable type int, replaced the hard coded values in the if statement with variables
+HOT_DOG_RECORD = 75
+TACO_RECORD = 53
+
+numHotDogs = int(input("How many hot dogs can you eat in 10 minutes?: "))
+numTacos = int(input("How many tacos can you eat in 10 minutes?: "))
+
+if numHotDogs > HOT_DOG_RECORD and numTacos > TACO_RECORD:
+    print("Wow! You broke both world records!")
+
+#E. Prints all even numbers from 100-1
+#Created variable for the starting number of 100, uses modulo operator to check if even
+start = 100
+while start > 1:
+    if start%2 == 0:
+        print(start)
+    start -= 1
+
