@@ -1,4 +1,5 @@
 import sys
+turn = 'X'
 
 boardDict = {
             'A1': ' ', 'A2': ' ', 'A3': ' ',
@@ -44,45 +45,61 @@ def checkRow(row):
     
     return win
 
+def validPoint(pnt):
+    valid = False
+    valids = ['A1','A2','A3','B1','B2','B3','C1','C2','C3']
+    for val in valids:
+        if pnt == val:
+            if boardDict[pnt] == ' ':
+                valid = True
+                break
+    return valid
+
 boardPrint(boardDict)
 
-for playerTurn in range(10):
-    if (playerTurn + 1)%2 == 0:
-        turn = 'O'
-    else:
-        turn = 'X'
-    point = str(input("Choose your point, " + turn + " | Format (A1,B2,C3): "))
-    if boardDict[point] == ' ':
+while True:
+    while True:
+        point = str(input("Choose your point, " + turn + " | Format (A1,B2,C3): "))
+        if validPoint(point):
             boardDict[point] = str(turn)
             boardPrint(boardDict)
             updateScanners()
-    else:
-        print("That point is already taken. Turn Skipped")
+        else:
+            print("That point is already taken and/or is not valid.")
+            continue
 
-    if checkRow(columnOneScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(columnTwoScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(columnThreeScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(rowOneScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(rowTwoScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(rowThreeScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(diagonalOneScan):
-        print(turn + ' wins!')
-        sys.exit()
-    elif checkRow(diagonalTwoScan):
-        print(turn + ' wins!')
-        sys.exit()
-
-
+        if checkRow(columnOneScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(columnTwoScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(columnThreeScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(rowOneScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(rowTwoScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(rowThreeScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(diagonalOneScan):
+            print(turn + ' wins!')
+            break
+        elif checkRow(diagonalTwoScan):
+            print(turn + ' wins!')
+            break
     
+        if turn == 'X':
+            turn = 'O'
+        else:
+            turn = 'X'
+    
+    playAgain = input("Want to play again? | Respond with Y/N: ")
+    if playAgain.lower() == 'y':
+        continue
+    else:
+        sys.exit()
