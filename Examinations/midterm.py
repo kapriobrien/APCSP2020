@@ -7,6 +7,8 @@ boardDict = {
             'C1': ' ', 'C2': ' ', 'C3': ' '
             }
 
+
+
 def updateScanners():
     global columnOneScan
     global columnTwoScan
@@ -36,7 +38,6 @@ def boardPrint(board):
 def checkRow(row): 
   
     win = True
-    point = turn
     # Comparing each element with first item  
     for point in row: 
         if turn != point: 
@@ -100,6 +101,12 @@ while True:
     
     playAgain = input("Want to play again? | Respond with Y/N: ")
     if playAgain.lower() == 'y':
+        boardDict = {
+            'A1': ' ', 'A2': ' ', 'A3': ' ',
+            'B1': ' ', 'B2': ' ', 'B3': ' ',
+            'C1': ' ', 'C2': ' ', 'C3': ' '
+            }
+
         continue
     else:
         sys.exit()
